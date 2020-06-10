@@ -1,0 +1,183 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">  
+  <script src="../Hide.js"></script>
+
+    <link rel="stylesheet" href="../magestion2.css">
+  
+    <title>Profile</title>
+
+</head>
+<body style="background-image: url(../Backgrounds/ProfileDoctorBackground.jpg);background-size: cover;">
+
+
+  <div class="nav navbar-nav side-nav w3-animate-left" style="display: block" id="mySidebar">
+    <li><a href="/Receptioniste"><i class="fa fa-user"></i> Profile</a></li>
+    <li><a href="/Receptioniste/Patient"><i class="fa fa-user-plus"></i> Gestion Patient</a></li>
+    <li><a href="/Receptioniste/Doctor"><i class="fa fa-user-md"></i> Gestion Medecin</a></li>
+    <li><a href="/Receptioniste/Receptioniste"><i class="fa fa-users"></i> Gestion Receptioniste</a></li>
+    <li><a href="/Receptioniste/Departement"><i class="fa fa-building-o"></i> Gestion Departement</a></li>
+    <li><a href="/Receptioniste/Consultation"><i class="fa fa-file-text-o"></i> Gestion Consultation</a></li>
+</div>
+
+
+    <div id="main">
+      <div class="top-nav navbar-fixed-top">
+         <div class="w3-teal">
+             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="OpenSide()">&#9776;</button>
+         </div>
+         <div class="w3-container">
+          <li><a href="/Receptioniste/Logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+         </div>
+     </div>
+
+
+        <div id="page-wrapper" style= "margin-left: 19%">
+            <div class="container-fluid">
+                <div id="kifkif">
+	<div class="title content">
+        Gestion Patient <p style="float: right;"><button type="button"  data-toggle="modal" data-target="#AddPatient">
+       <i class="fas fa-plus-circle"></i> Patient</button></p>
+    </div>
+     
+     <div class="row content1">
+     <table class="table ">
+         <thead> 
+             <th>Nom </th>
+             <th>Prenom</th>
+             <th>Sickness</th>
+         </thead>
+         <% for( var i=0; i<Object.keys(Patient).length ; i++) { %>
+         <tr>
+             <td><%=Patient[i].Last_Name%></td>
+             <td><%=Patient[i].First_Name%></td>
+             <td><%=Patient[i].Sickness%></td>
+             <td>
+                 <div class="dropdown">
+                 <button style="float:right" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Action
+                 </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                   <p><a class="dropdown-item" data-toggle="modal" data-target="#Consult<%=Patient[i].id%>"><i class="fas fa-edit"  ></i> Consulter </a></p>
+                   <a class="dropdown-item" href="/Receptioniste/Patient/<%= Patient[i].id %>" ><i class="far fa-trash-alt"></i> Supprimer </a>  <!-- Supression mte3 il patient mil doctor-->
+                 </div>
+             </td>
+         </tr>
+         <% } %>
+     </table>
+ </div>      
+ </div>
+</div>       	
+</div>
+</div>
+<!-- POP UP AJOUT -->
+<div class="modal fade" id="AddPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form action="/Receptioniste/Patient" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label> Prenom du Patient :</label>
+            <input class='form-control' placeholder="Enter First Name" name='First_Name'>
+            </div>   
+            <div class="form-group">
+            <label > Nom du Patient :</label>
+            <input class='form-control'  placeholder="Enter Last Name" name='Last_Name'>
+            </div>
+            <div class="form-group">
+              <label > Maladie du Patient :</label>
+              <input class='form-control'  placeholder="Enter Maladie " name='Sickness'>
+              </div>
+            <div class="form-group">
+            <label> Email : </label>
+             <input class='form-control' placeholder="******@****.***" name='Email'>
+            </div>
+            <div class="form-group">
+              <label> Mot de passe : </label>
+               <input type="password" class='form-control' placeholder="*****" name='Password'>
+              </div>
+            <div class="form-group">
+              <label> Numero de Telephone :</label>
+              <input type="text" class='form-control' placeholder="Enter Phone Number" name='Phone_Number'>
+            </div>  
+            <div class="form-group">
+              <label > Medecin :</label>
+              <select class='form-control' name='Doctor'>
+               <option> Not Asingned to a Docotor Yet </option> 
+                <% for ( var i=0 ; i<Object.keys(Doctor).length ; i++ ) { %>
+                <option> <%= Doctor[i].Last_Name %> </option>
+                <% } %>
+              </select>
+            </div>
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END POP UP AJOUT-->
+
+<!-- POP UP Consulter -->
+<% for( var i=0; i<Object.keys(Patient).length ; i++) { %>
+<div class="modal fade" id="Consult<%=Patient[i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label> Prenom du Patient :</label>
+            <input class='form-control' disabled value="<%=Patient[i].First_Name %>" name='First_Name'>
+            </div>   
+            <div class="form-group">
+            <label > Nom du Patient :</label>
+            <input class='form-control' disabled value="<%=Patient[i].Last_Name %>" name='Last_Name'>
+            </div>
+            <div class="form-group">
+              <label > Maladie du Patient :</label>
+              <input class='form-control' disabled value="<%=Patient[i].Sickness %> " name='Sickness'>
+              </div>
+            <div class="form-group">
+            <label> Email : </label>
+             <input class='form-control' disabled value="<%=Patient[i].Email %>" name='Email'>
+            </div>
+            <div class="form-group">
+              <label> Mot de passe : </label>
+               <input type="password" class='form-control' disabled value="<%=Patient[i].Password %>" name='Password'>
+              </div>
+            <div class="form-group">
+              <label> Numero de Telephone :</label>
+              <input type="text" class='form-control' disabled value="<%=Patient[i].Phone_Number %>" name='Phone_Number'>
+            </div> 
+            <div class="form-group">
+              <label > Medecin :</label>
+                <input type="text" class='form-control' disabled value="<%=Patient[i].Doctor%>" name='Doctor'> <!-- thot variable fil place holder-->
+              
+            </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+<!-- END POP UP Consly-->
+</body>
+</html>

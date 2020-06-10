@@ -1,0 +1,97 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">  
+  <script src="../Hide.js"></script>
+
+    <link rel="stylesheet" href="../magestion2.css">
+  
+    <title>Profile</title>
+
+</head>
+<body style="background-image: url(../Backgrounds/ProfileDoctorBackground.jpg);background-size: cover;">
+
+
+    <div class="nav navbar-nav side-nav w3-animate-left" style="display: block" id="mySidebar">
+        <li><a href="/Receptioniste"><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="/Receptioniste/Patient"><i class="fa fa-user-plus"></i> Gestion Patient</a></li>
+        <li><a href="/Receptioniste/Doctor"><i class="fa fa-user-md"></i> Gestion Medecin</a></li>
+        <li><a href="/Receptioniste/Receptioniste"><i class="fa fa-users"></i> Gestion Receptioniste</a></li>
+        <li><a href="/Receptioniste/Departement"><i class="fa fa-building-o"></i> Gestion Departement</a></li>
+        <li><a href="/Receptioniste/Consultation"><i class="fa fa-file-text-o"></i> Gestion Consultation</a></li>
+    </div>
+
+
+    <div id="main">
+      <div class="top-nav navbar-fixed-top">
+         <div class="w3-teal">
+             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="OpenSide()">&#9776;</button>
+         </div>
+         <div class="w3-container">
+          <li><a href="/Receptioniste/Logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+         </div>
+     </div>
+
+     <div id="page-wrapper" style= "margin-left: 19%">
+         <div class="container-fluid">
+             <div id="kifkif">
+      <div class="title content">
+        informations Personelles <p style="float: right;"><button data-toggle="modal" data-target="#Modify" ><i class="fas fa-edit"></i> Modifier </button></p>
+    </div>
+      
+      <div class="content1">
+         <p><u><b>Nom     :           </b></u>    <%=user[0].Last_Name%>      </p>
+         <p><u><b>Prenom  :        </b></u>       <%=user[0].First_Name%>     </p>
+         <p><u><b>Adresse :       </b></u>        <%=user[0].Adresse %>       </p> 
+         <p><u><b>Mail    :       </b></u>        <%=user[0].Email %>         </p>
+         <p><u><b>Telephone :     </b></u>        <%=user[0].Phone_Number %>  </p> 
+      </div>        
+  </div>
+
+   <!-- POP UP AJOUT -->
+
+   <div class="modal fade" id="Modify" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <form action="/Receptioniste" method="POST">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label > Nom : </label>
+                <input class='form-control' value="<%=user[0].Last_Name%>" name='Last_Name'>
+             </div>   
+            <div class="form-group">
+                <label > Prenom : </label>
+                <input class='form-control' value="<%=user[0].First_Name%>" name='First_Name'>
+            </div>
+            <div class="form-group">
+              <label > Email : </label>
+              <input class='form-control' value="<%=user[0].Email %>" name='Email'>
+           </div>   
+            <div class="form-group">
+                <label > Adress : </label>
+                <input class='form-control' value="<%=user[0].Adresse %>" name='Adresse'>
+             </div>   
+             <div class="form-group">
+                <label > Telephone : </label>
+                <input class='form-control' value="<%=user[0].Phone_Number %>" name='Phone_Number'>
+             </div>   
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button class="btn btn-primary" type="submit" >Modifier</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+<!-- END POP UP AJOUT-->
+</body>

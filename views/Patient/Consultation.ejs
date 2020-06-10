@@ -1,0 +1,97 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">  
+    <script src="../Hide.js"></script>
+
+    <link rel="stylesheet" href="../magestion2.css">
+  
+    <title>Profile</title>
+
+</head>
+
+<body style="background-image: url(./Backgrounds/ProfileDoctorBackground.jpg);background-size: cover;">
+
+    <div class="nav navbar-nav side-nav w3-animate-left" style="display: block" id="mySidebar">
+        <li><a href="/Patient"     ><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="/Patient/Consultation"><i class="fa fa-user-plus"></i> Gestion Consultation </a></li>
+    </div>
+
+    <div id="main">
+      <div class="top-nav navbar-fixed-top">
+         <div class="w3-teal">
+             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="OpenSide()">&#9776;</button>
+         </div>
+         <div class="w3-container">
+          <li><a href="/Patient/Logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+         </div>
+     </div>
+     <div id="page-wrapper" style= "margin-left: 19%">
+      <div class="container-fluid">
+              <div id="kifkif">
+    <div class="title content">
+                          Gestion Consultation <p style="float: right;"></p>
+                      </div>
+                      
+                      <div class="content1">
+                        <table class="table table-dark">
+                            <thead>
+                                <th>Date Consultation </th>
+                                <th>Medecin</th>
+                                <th>Hour</th>
+                                <th></th>
+                            </thead>
+                              <% for ( var i=0 ; i<Object.keys(Consultation).length ; i++ ) { %>
+                                <tr>
+                                    <td><%=Consultation[i].Date%></td>
+                                    <td><%=Consultation[i].Patient%></td>
+                                    <td><%=Consultation[i].Hour%></td>
+                                    <td>
+                                <td>
+                                  <button style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#Consult<%=Consultation[i].id%>" ><i class="fa fa-eye"></i> Consulter</button>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </table>
+                    </div>     
+                  </div>
+              </div>       	
+            </div>
+        </div>
+
+        <% for ( var i=0 ; i<Object.keys(Consultation).length ; i++ ) { %>
+<div class="modal fade" id="Consult<%=Consultation[i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label > Date :</label>
+                <input class='form-control' disabled value="<%=Consultation[i].Date%>" name='' > 
+            </div>   
+            <div class="form-group">
+                <label > Heure :</label>
+                <input class='form-control' disabled value="<%=Consultation[i].Hour%>" name='' > 
+            </div>
+            <div class="form-group">
+              <label > Doctor :</label>
+              <input class='form-control' disabled value="<%=Consultation[i].Doctor%>" name='' > 
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<%}%>
+</body>
+</html>

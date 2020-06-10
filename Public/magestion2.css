@@ -1,0 +1,143 @@
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+body {
+        margin-top: 50px;
+        background-color: #172462;
+        height: 500px;
+        
+    }
+
+.side-nav {
+        position: fixed;
+        top: 40px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        border-top: 1px rgba(0,0,0,.5) solid;
+        overflow-y: auto;
+        background-color: #181827;
+        /*background-color: #222;*/
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+        margin-top: 0;
+
+
+    }
+
+.side-nav>li>a {
+        width: 225px;
+        border-bottom: 1px rgba(0,0,0,.3) solid;
+    }
+
+.side-nav li a:hover,
+.side-nav li a:focus {
+        outline: none;
+        background-color: #1a242f !important;
+    }
+
+.navbar-nav>li>a{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#l1{
+       
+        width: 225px;
+        border-bottom: 1px rgba(0,0,0,.3) solid;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        outline: none;
+        background-color: #181827 !important;
+
+    }
+#l1 button{
+    font-size: 20px !important;
+    border: none;
+    background-color: transparent;
+    color: #337ab7;
+}
+
+
+
+.top-nav {
+    padding: 0 15px;
+    padding-left: 10px;
+    overflow: hidden;
+    }
+
+.top-nav>li>a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 20px;
+    color: #fff;
+    }
+
+.navbar-fixed-top{
+    background-color:#181827 ;
+    }
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus
+{
+    color: #fff;
+    background-color: #1a242f;
+}
+
+#openNav{
+    float:left;
+    font-size: 24px !important;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.w3-container{
+    float: right;
+     margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+    #lol {
+    width: 100%;
+    padding: 5px 10px;
+    margin:auto;
+    position: relative;
+    margin-top: 100px;
+    }
+
+    #title {
+        text-align: center;
+        font-size : 25px;
+        }
+
+    .content{
+        background-color: #C0C0C0;
+        position: relative; 
+        margin-left: 10% ;
+        margin-top: 20px;
+        padding:5px;
+        width:80%; 
+        border-top: 5px;
+        padding: 20px;
+    }
+    
+    .content1{
+        background-color: #ffffffb3;
+        position: relative; 
+        margin-left: 10% ;
+        padding:5px;
+        width:80%; 
+        border-bottom: 5px;
+        padding: 20px;
+
+    }
+
+    #kifkif{
+        margin-top: 100px;
+    }
