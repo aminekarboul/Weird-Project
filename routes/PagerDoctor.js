@@ -27,6 +27,15 @@ router.get("/",(req,res)=>{
   })
 })
 
+router.post("/",(req,res)=>{
+  let user = req.session.user ;
+  if(!user) return res.redirect("/")
+  con.query(`INSERT INTO Doctor ( First_Name , Last_Name , Phone_Number ) VALUES ( '${req.body.First_Name}' , '${req.body.Last_Name}' ,'${req.body.Phone_Number}' ) ; ` , (err,row)=>{
+    if(err) console.log( err ) 
+      res.redirect("./Doctor")
+  })
+})
+
 router.get("/Patient",(req,res)=>{
   let user = req.session.user ;
   if(!user) return res.redirect("/")

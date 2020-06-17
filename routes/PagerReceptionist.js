@@ -27,8 +27,9 @@ router.get("/",(req,res)=>{
 })
 
 router.post("/",(req,res)=>{
-       con.query(`UPDATE Receptioniste  SET First_Name='${req.body.First_Name}' , Last_Name='${req.body.Last_Name}' , Email= '${req.body.Email}' , Phone_Number='${req.body.Phone_Number}' , Adresse='${req.body.Adresse}'  WHERE id = ${req.session.user.id}  ;`, (err,row)=>{
+       con.query(`UPDATE Receptioniste  SET First_Name='${req.body.First_Name}' , Last_Name='${req.body.Last_Name}' , Email= '${req.body.Email}' , Phone_Number='${req.body.Phone_Number}'  WHERE id = ${req.session.user.id}  ;`, (err,row)=>{
         if(err) console.log( err ) 
+        console.log("hha")
         res.redirect("./Receptioniste") 
     } )
 })
@@ -87,12 +88,6 @@ router.get("/Departement/:id",(req,res)=>{
         if(err) console.log( err )
     res.redirect("/Receptioniste/Departement")
 })
-})
-
-router.get("/Consultation",(req,res)=>{
-    let user = req.session.user ;
-    if(!user) return res.redirect( "/" )
-    res.render("./Receptioniste/Consultation.ejs")
 })
 
 router.get("/Doctor",(req,res) => {

@@ -37,8 +37,8 @@
     </div>
       
       <div class="content1">
+        <p><u><b>Prenom :        </b></u><%=Patient[0].First_Name%>          </p>
          <p><u><b>Nom :           </b></u><%=Patient[0].Last_Name%>              </p>
-         <p><u><b>Prenom :        </b></u><%=Patient[0].First_Name%>          </p>
          <p><u><b>Email :         </b></u><%=Patient[0].Email%>              </p> 
          <p><u><b>Telephone :     </b></u><%=Patient[0].Phone_Number%>              </p> 
       </div>        
@@ -48,6 +48,7 @@
 
    <div class="modal fade" id="Modify" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
+      <form  action="/Doctor" method="POST">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle"></h5>
@@ -58,27 +59,24 @@
         <div class="modal-body">
             <div class="form-group">
                 <label > Nom : </label>
-                <input class='form-control' value="<?php ?>" name=''>
+                <input class='form-control' value="<%=Patient[0].Last_Name%> " name='Last_Name'>
              </div>   
             <div class="form-group">
                 <label > Prenom : </label>
-                <input class='form-control' value="<?php ?>" name=''>
+                <input class='form-control' value="<%=Patient[0].First_Name%> " name='First_Name'>
             </div>
-            <div class="form-group">
-                <label > Adress : </label>
-                <input class='form-control' value="<?php ?>" name=''>
-             </div>   
              <div class="form-group">
                 <label > Telephone : </label>
-                <input class='form-control' value="<?php ?>" name=''>
+                <input class='form-control' value="<%=Patient[0].Phone_Number %> " name='Phone_Number'>
              </div>   
             
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-primary">Modifier</button>
+          <button type="submit" class="btn btn-primary">Modifier</button>
         </div>
       </div>
+    </form>
   </div>
 <!-- END POP UP AJOUT-->
 </body>
